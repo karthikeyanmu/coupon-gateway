@@ -5,7 +5,7 @@
            http://www.springframework.org/schema/beans/spring-beans.xsd">
     
      
-     <!-- 
+     
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -13,8 +13,8 @@
 		<property name="username" value="admin" />
 		<property name="password" value="tqLR3InK-X5L" />
 	</bean>
-	-->
 	
+	<!-- 
 	 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -23,7 +23,7 @@
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
-	
+	-->
 	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
