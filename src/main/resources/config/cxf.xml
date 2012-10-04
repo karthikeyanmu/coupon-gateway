@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+				http://www.springframework.org/schema/beans/spring-beans.xsd
+				http://cxf.apache.org/jaxrs
+				http://cxf.apache.org/schemas/jaxrs.xsd
+				http://cxf.apache.org/core 
+      			http://cxf.apache.org/schemas/core.xsd">
+
+	<import resource="util.xml" />
+	<import resource="hibernate.xml" />
+	<import resource="dao.xml" />
+	<import resource="services.xml" />
+
+	<bean id="jacksonMapper" class="org.codehaus.jackson.map.ObjectMapper">
+  <property name="serializationConfig.dateFormat">
+    <bean class="java.text.SimpleDateFormat">
+      <constructor-arg value="dd-MM-yyyy HH:mm:ss"/>
+    </bean>
+  </property>
+</bean>
+
+	<jaxrs:server>
+
+		<jaxrs:serviceBeans>
+			<ref bean="couponPayment" />
+			<ref bean="merchantService" />
+		</jaxrs:serviceBeans>
+
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		</jaxrs:extensionMappings>
+
+		<jaxrs:providers>
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider">
+				<property name="mapper" ref="jacksonMapper"/>
+			</bean>
+		</jaxrs:providers>
+
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+
+	</jaxrs:server>
+
+
+</beans>
