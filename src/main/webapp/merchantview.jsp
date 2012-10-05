@@ -96,6 +96,10 @@ var orderNo=null;
 			orderNo=$('#orderNo').val();
 			$("#couponList").jqGrid('setGridParam',{url:"services/merchantService/getCouponList", datatype:"json",postData:{"merchant.merchantID":merchantID,"orderNo":orderNo}, page:1}).trigger("reloadGrid");
 		});
+		
+		$('#clearCouponNumber').click(function(){
+			$('#newCoupon').val('');					
+		});
 	});
 	
 	window.setTimeout( autoRefreshGrid, 5000);
@@ -111,11 +115,12 @@ var orderNo=null;
 		var jsonData=$.toJSON( data );
 		//alert(jsonData);
 		if(data){
+			$('#newCoupon').val('');
 			merchantID=$('#merchant\\.merchantID').val();
 			orderNo=$('#orderNo').val();
 			$("#couponList").jqGrid('setGridParam',{url:"services/merchantService/getCouponList", datatype:"json",postData:{"merchant.merchantID":merchantID,"orderNo":0}, page:1}).trigger("reloadGrid");
 		}else{
-			alert();
+			alert('Error occurred during process');
 		}
 	}
 </script>
@@ -124,24 +129,27 @@ var orderNo=null;
 	<div id="content">
 		<div class="outerborder">
 			<h2>
-				<FONT COLOR=#4297D7>Welcome to Coupon Gateway Merchant
-					Service</FONT>
+				<FONT COLOR=#4297D7>Coupon Gateway Merchant Service</FONT>
 			</h2>
 		</div>
 		<br/>		
 		<div id="" style="margin-left: 28%;">
-			<h5><FONT COLOR=#4297D7>Welcome <%=request.getParameter("merchant.merchantID")%>
+			<h5><FONT COLOR=#4297D7>Logged in as : <%=request.getParameter("merchant.merchantID")%>
 					- <%=request.getParameter("merchant.merchantName")%></FONT></h5>
 		</div>
 		<form method="post">
 				<input type="hidden" id="merchant.merchantID" name="merchant.merchantID" value="<%= request.getParameter("merchant.merchantID")%>"/>
-				<div id="" style="margin-top: 30px;">
+				<div id="" style="margin-top: 30px;margin-left: 40px;">
 				<h4>
 					<FONT COLOR=#4297D7>Charge Coupon</FONT>
 				</h4>
-				<span><FONT COLOR=#4297D7>Coupon Number</FONT></span> <input
-					id="newCoupon" name="newCoupon" /> <input id="chargeCoupon"
+				<span><FONT COLOR=#4297D7>Coupon Number</FONT></span> 
+					<input
+					id="newCoupon" name="newCoupon" /> 
+					<input id="chargeCoupon"
 					type="button" value="Charge" />
+					<input id="clearCouponNumber"
+					type="button" value="Clear" />
 			</div>
 
 			<div id="" style="margin-top: 30px;">
