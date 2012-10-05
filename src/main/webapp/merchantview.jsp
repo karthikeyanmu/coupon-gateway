@@ -4,16 +4,37 @@
 <title>Merchant View</title>
 <style type="text/css">
 
+
+
+.outerborder {
+	padding: 10px;
+	border-radius: 10px;
+	background: #FFFFFF;
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
+	border: 1px solid #000;
+}
+
+.contentarea {
+	padding: 10px;
+	border-radius: 10px;
+	background: #FFFFFF;
+	width: 25%;
+	margin-right: auto;
+	margin-top: 60px;
+	margin-left: auto;
+	border: 1px solid #000;
+}
+
 body {	
-	margin: 50px 0px;
-	width:75%;
+	margin: 50px 0px;	
 	text-align: center;
 }
 
 #content {
 	
 }
-
 </style>
 <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="js/jquery.json-2.3.js"></script>
@@ -29,7 +50,7 @@ var orderNo=null;
 		orderNo=$('#orderNo').val();	
 		
 		$("#couponList").jqGrid({
-			autowidth : true,
+			autowidth : false,
 			loadonce:true,
 		   	url:'services/merchantService/getCouponList',
 		   	serializeGridData: function (postData){			
@@ -101,29 +122,47 @@ var orderNo=null;
 </head>
 <body>
 	<div id="content">
-		<div id="">						
-			<span>Welcome <%= request.getParameter("merchant.merchantID") %> - <%=request.getParameter("merchant.merchantName") %></span>					
+		<div class="outerborder">
+			<h2>
+				<FONT COLOR=#4297D7>Welcome to Coupon Gateway Merchant
+					Service</FONT>
+			</h2>
 		</div>
-		<h2>Coupon Gateway Merchant Service</h2>
+		<br/>		
+		<div id="" style="margin-left: 28%;">
+			<h5><FONT COLOR=#4297D7>Welcome <%=request.getParameter("merchant.merchantID")%>
+					- <%=request.getParameter("merchant.merchantName")%></FONT></h5>
+		</div>
 		<form method="post">
 				<input type="hidden" id="merchant.merchantID" name="merchant.merchantID" value="<%= request.getParameter("merchant.merchantID")%>"/>
-				<div id="">
-					<h4>Charge Coupon</h4>
-					<span>Coupon Number</span>
-					<input id="newCoupon" name="newCoupon" /> 
-					<input id="chargeCoupon" type="button" value="Charge"/>
-				</div>
-				<div id="">
-					<h4>Search</h4>
-					<span>Order Number</span>
-					<input type="text" id="orderNo" name="orderNo" />					
-					<input id="search" type="button" value="Search"/>
-				</div>
-				<div id="">
-					<h4>Search Result</h4>					
-					<table id="couponList"></table>
-					<div id="pager"></div>
-				</div>
+				<div id="" style="margin-top: 30px;">
+				<h4>
+					<FONT COLOR=#4297D7>Charge Coupon</FONT>
+				</h4>
+				<span><FONT COLOR=#4297D7>Coupon Number</FONT></span> <input
+					id="newCoupon" name="newCoupon" /> <input id="chargeCoupon"
+					type="button" value="Charge" />
+			</div>
+
+			<div id="" style="margin-top: 30px;">
+				<h4>
+					<FONT COLOR=#4297D7>Search</FONT>
+				</h4>
+				<span><FONT COLOR=#4297D7>Order Number</FONT></span> <input
+					type="text" id="orderNo" name="orderNo" /> <input id="search"
+					type="button" value="Search" />
+			</div>
+
+
+			<div id="" style="margin-top: 30px;">
+				<h4>
+					<FONT COLOR=#4297D7>Search Result</FONT>
+				</h4>
+			</div>
+			<div id="" style="margin-left: 25%;">
+				<table id="couponList"></table>
+				<div id="pager"></div>
+			</div>
 		</form>
 	</div>
 </body>

@@ -6,6 +6,7 @@
     
      
      
+    
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -14,8 +15,8 @@
 		<property name="password" value="tqLR3InK-X5L" />
 	</bean>
 	
-	<!-- 
-	 
+	
+	 <!-- 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />

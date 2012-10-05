@@ -24,6 +24,27 @@ text-align: left;
 color:red;
 margin: 20px 0px;
 }
+
+.outerborder {
+	padding: 10px;
+	border-radius: 10px;
+	background: #FFFFFF;
+	width: 40%;
+	margin-right: auto;
+	margin-left: auto;
+	border: 1px solid #000;
+}
+
+.contentarea {
+	padding: 10px;
+	border-radius: 10px;
+	background: #FFFFFF;
+	width: 20%;
+	margin-right: auto;
+	margin-top:60px;
+	margin-left: auto;
+	border: 1px solid #000;
+}
 </style>
 <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="js/jquery.json-2.3.js"></script>
@@ -54,11 +75,13 @@ margin: 20px 0px;
 </script>
 </head>
 <body>
-	<div id="content">
-		<h2>Welcome to Coupon Gateway Merchant Service</h2>
+	<div class="outerborder">
+		<h2><FONT COLOR=#4297D7>Welcome to Coupon Gateway Merchant Service</FONT></h2>
+	</div>
+<div class="contentarea">
 		<form method="post">
 				<span id="errorMessage"></span>
-				<span>Merchant ID</span>
+				<span><FONT COLOR=#4297D7>Merchant ID</FONT></span>
 				<input id="merchant.merchantID" name="merchant.merchantID" value="4266961000520001" /> <br/>
 				<input id="formParam" type="button" value="Login"/>
 				
